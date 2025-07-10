@@ -5,8 +5,8 @@ import { gsap } from 'gsap'
 gsap.registerPlugin(ScrollTrigger, SplitText) //Registro dos Plugins do GSAP (Sem isso não funciona)
 const App = () => {
   return (
-    <div>
-      Ola
+    <div className='flex-center h-[100vh]'>
+    <h1 className='text-3xl text-indigo-500'>Ola</h1>
     </div>
   )
 }
