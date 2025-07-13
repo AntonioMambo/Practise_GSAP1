@@ -2,50 +2,12 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
-
+import { animateHeroSection } from "../Animations/Animations";
 const Hero = () => {
   // Hook para animações GSAP ao montar o componente
   useGSAP(() => {
-    gsap.registerPlugin(SplitText);
-
-    // Divide o título em caracteres e palavras para animação
-    const heroSplit = new SplitText(".title", { type: "chars, words" });
-    // Divide o subtítulo em linhas para animação
-    const paragraphSplit = new SplitText(".subtitle", { type: "lines" });
-
-    // Adiciona a classe de gradiente em cada caractere do título
-    heroSplit.chars.forEach((char) => char.classList.add("text-gradient"));
-
-    // Animação dos caracteres do título
-    gsap.from(heroSplit.chars, {
-      duration: 1.8,
-      yPercent: 100,
-      stagger: 0.06,
-      ease: "expo.out",
-    });
-
-    // Animação das linhas do subtítulo
-    gsap.from(paragraphSplit.lines, {
-      duration: 1.8,
-      yPercent: 100,
-      stagger: 0.06,
-      ease: "expo.out",
-      delay: 1,
-      opacity: 0,
-    });
-
-    // Animação da folha direita ao rolar a página
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-        pin: true,
-      },
-    }).to(".right-leaf", { y: 200 }, 0)
-    .to(".left-leaf", { y: -200}, 0);
-  }); // Correção: fechamento correto do hook useGSAP
+    animateHeroSection();
+});
 
   return (
     <>
